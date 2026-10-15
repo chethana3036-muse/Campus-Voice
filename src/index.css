@@ -1,1 +1,109 @@
 @import "tailwindcss";
+
+@layer utilities {
+  @keyframes floatUp {
+    0% {
+      transform: translateY(105vh) translateX(0) scale(0.85);
+      opacity: 0;
+    }
+    10% {
+      opacity: var(--bubble-opacity, 0.6);
+    }
+    50% {
+      transform: translateY(50vh) translateX(var(--drift-x, 20px)) scale(1.05);
+    }
+    85% {
+      opacity: var(--bubble-opacity, 0.6);
+    }
+    100% {
+      transform: translateY(-15vh) translateX(var(--drift-end-x, -20px)) scale(1.15);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sparkleTwinkle {
+    0%, 100% {
+      opacity: 0.15;
+      transform: scale(0.6) rotate(0deg);
+    }
+    50% {
+      opacity: 0.95;
+      transform: scale(1.2) rotate(180deg);
+      filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.9));
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.75;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.animate-float-bubble {
+  animation: floatUp var(--duration, 16s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-sparkle {
+  animation: sparkleTwinkle var(--sparkle-duration, 3.5s) ease-in-out infinite;
+  animation-delay: var(--sparkle-delay, 0s);
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Glassmorphism custom styling for deep sparkly blue theme */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card {
+  background: rgba(13, 27, 62, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card:hover {
+  background: rgba(17, 34, 78, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom iridescent bubble reflection */
+.bubble-sphere {
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(147, 197, 253, 0.4) 25%,
+    rgba(96, 165, 250, 0.2) 50%,
+    rgba(192, 132, 252, 0.25) 75%,
+    rgba(56, 189, 248, 0.35) 100%
+  );
+  box-shadow:
+    inset -4px -4px 10px rgba(125, 211, 252, 0.4),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.7),
+    0 0 15px rgba(147, 197, 253, 0.4);
+}
