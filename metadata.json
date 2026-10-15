@@ -1,0 +1,6 @@
+{
+  "name": "Campus Voice",
+  "description": "One campus. One voice. Official campus announcement hub for academic notices, cultural events, and placement drives.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
